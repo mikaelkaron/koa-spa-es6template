@@ -1,5 +1,5 @@
 // captures escape_char|${value}
-const RE = /`|(?:\$\{(.+)\})/g;
+const RE = /`|(?:\$\{\s*(\w+)\s*\})/g;
 
 /**
  * Compiles string to ES template
