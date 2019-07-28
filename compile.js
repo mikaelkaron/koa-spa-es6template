@@ -8,7 +8,9 @@ const RE = /`|(?:\$\{\s*(\w+)\s*\})/g;
 const compile = s =>
   Function(
     'map',
-    `return \`${s.replace(RE, (e, v) => (v ? `\${map.${v}}` : `\\${e}`))}\``
+    `return \`${s.replace(RE, (e, v) =>
+      v ? `\${map.${v} || '\$\{${v}\}'}` : `\\${e}`
+    )}\``
   );
 
-  module.exports = compile;
+module.exports = compile;
